@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { LogIn } from "@/pages/auth";
+import { LoginPage } from "@/pages/auth";
 import Root from "./root/Root";
 import { AuthRoute, ProtectedRoute } from "./routes";
 
@@ -14,7 +14,7 @@ const Router = createBrowserRouter([
         children: [
           {
             path: "/login",
-            element: <LogIn />,
+            element: <LoginPage />,
           },
         ],
       },
