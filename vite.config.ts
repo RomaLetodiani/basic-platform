@@ -9,7 +9,7 @@ export default defineConfig({
     checker({
       typescript: true,
       eslint: {
-        lintCommand: "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+        lintCommand: "eslint . --report-unused-disable-directives --max-warnings 0",
       },
     }),
   ],

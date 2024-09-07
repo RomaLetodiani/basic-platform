@@ -110,7 +110,7 @@ const LoginCard = () => {
         await login({ email: formData.email, password: formData.password });
         navigate("/", { replace: true });
       } catch (error) {
-        // @ts-ignore
+        // @ts-expect-error 'error' is of type 'unknown'
         setError(error.response?.data?.detail || "Login failed. Please try again.");
         console.error("Login failed:", error);
       } finally {

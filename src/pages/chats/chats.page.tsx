@@ -1,4 +1,5 @@
-import { useSearchParams } from "react-router-dom";
+import { MouseEvent, useState } from "react";
+// import { useSearchParams } from "react-router-dom";
 
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -23,22 +24,24 @@ import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
 import FormatColorFillIcon from "@mui/icons-material/FormatColorFill";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import React from "react";
 import { Search } from "@/components";
 
 const ChatsPage = () => {
-  // @ts-ignore
-  const [searchParams, setSearchParams] = useSearchParams();
-  // @ts-ignore
-  const [formats, setFormats] = React.useState(() => ["bold", "italic"]);
-  // @ts-ignore
-  const handleFormat = (event: React.MouseEvent<HTMLElement>, newFormats: string[]) => {
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const [formats, setFormats] = useState(() => ["bold", "italic"]);
+  const handleFormat = (_: MouseEvent<HTMLElement>, newFormats: string[]) => {
     setFormats(newFormats);
   };
   return (
     <>
       <Box
-        sx={{ display: "flex", flexDirection: "column", height: "100%", width: "100%", pb: "70px" }}
+        sx={{
+          display: "fSlex",
+          flexDirection: "column",
+          height: "100%",
+          width: "100%",
+          pb: "70px",
+        }}
       >
         <Stack direction={"row"} sx={{ width: "100%", pt: 1.5, pb: 3.5, px: 3 }}>
           <Stack direction="row" sx={{ gap: 1 }}>
