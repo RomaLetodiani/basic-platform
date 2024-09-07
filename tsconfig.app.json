@@ -18,7 +18,13 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
+    // paths
+    "paths": {
+      "@/*": ["./src/*"],
+      "@env": ["./src/env.ts"]
+    }
   },
   "include": ["src"]
 }
