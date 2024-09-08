@@ -18,7 +18,7 @@ const useAuthMutations = () => {
     console.error("❌ ~ AuthServices.login ~ error", error);
   }, []);
 
-  // TODO: fix any type
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const loginMutation = useMutation<any, Error, any>({
     mutationFn: AuthServices.localLogin,
     onSuccess,

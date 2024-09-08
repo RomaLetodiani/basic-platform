@@ -20,6 +20,7 @@ function getDaysInMonth(month: number, year: number) {
   return days;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function renderSparklineCell(params: GridCellParams<SparkLineData, any>) {
   const data = getDaysInMonth(4, 2024);
   const { value, colDef } = params;
@@ -56,6 +57,7 @@ function renderStatus(status: "Online" | "Offline") {
   return <Chip label={status} color={colors[status]} size="small" />;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function renderAvatar(params: GridCellParams<{ name: string; color: string }, any, any>) {
   if (params.value == null) {
     return "";
@@ -82,6 +84,7 @@ export const columns: GridColDef[] = [
     headerName: "Status",
     flex: 0.5,
     minWidth: 80,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     renderCell: (params) => renderStatus(params.value as any),
   },
   {
