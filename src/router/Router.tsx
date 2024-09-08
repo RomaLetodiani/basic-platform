@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-
-import { LoginPage } from "@/pages/auth";
-import Root from "./root/Root";
 import { AuthRoute, ProtectedRoute } from "./routes";
+import { LoginPage } from "@/pages/auth";
+
+import Root from "./root/Root";
 
 const Router = createBrowserRouter([
   {
@@ -20,6 +20,7 @@ const Router = createBrowserRouter([
       },
       {
         element: <ProtectedRoute />,
+        path: "/",
       },
     ],
   },
