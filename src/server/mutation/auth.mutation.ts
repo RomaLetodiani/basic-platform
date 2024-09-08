@@ -18,7 +18,8 @@ const useAuthMutations = () => {
     console.error("❌ ~ AuthServices.login ~ error", error);
   }, []);
 
-  const loginMutation = useMutation<string, Error, any>({
+  // TODO: fix any type
+  const loginMutation = useMutation<any, Error, any>({
     mutationFn: AuthServices.localLogin,
     onSuccess,
     onError,
