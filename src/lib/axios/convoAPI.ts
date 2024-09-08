@@ -3,7 +3,7 @@ import axios from "axios";
 import qs from "qs";
 
 const convoAPI = axios.create({
-  baseURL: env.CONVO_API_BASE_URL,
+  baseURL: env.VITE_CONVO_API_BASE_URL,
 });
 
 convoAPI.interceptors.request.use((config) => {

@@ -3,7 +3,7 @@ import axios from "axios";
 import qs from "qs";
 
 const platformAPI = axios.create({
-  baseURL: env.PLATFORM_API_BASE_URL,
+  baseURL: env.VITE_PLATFORM_API_BASE_URL,
 });
 
 platformAPI.interceptors.request.use((config) => {
