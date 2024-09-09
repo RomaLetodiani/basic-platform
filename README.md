@@ -1,50 +1,39 @@
-# React + TypeScript + Vite
+# Botu Platform Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Repository Rules and Structure
 
-Currently, two official plugins are available:
+### 1. `index.ts` for Import/Export
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Use `index.ts` to export all components, functions, and other modules from that directory.
+- This practice allows for cleaner imports in other parts of the application.
 
-## Expanding the ESLint configuration
+Example:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+```typescript
+// components/index.ts
+export { default as Button } from "./Button";
+export { default as Input } from "./Input";
+export { default as Card } from "./Card";
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Usage:
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```typescript
+import { Button, Input, Card } from "@/components";
 ```
+
+### 2. Shared Components and Utilities on First Level Directory
+
+- Place shared components, hooks, and utilities in the first-level directory.
+- This makes them easily accessible throughout the application.
+
+### 3. Page-Specific Components and Environment
+
+- Each page has its own directory with components and environment files.
+- This helps in organizing and isolating page-specific logic and UI elements.
+
+Guidelines:
+
+- Keep page-specific components within their respective page directories
+- Use shared components when possible to maintain consistency
+- Create custom hooks for page-specific logic and data fetching
