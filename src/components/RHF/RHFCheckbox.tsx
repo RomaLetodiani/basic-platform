@@ -1,12 +1,9 @@
 import { Controller, FieldValues, Path, useFormContext } from "react-hook-form";
 
-import {
-  Checkbox,
-  CheckboxProps,
-  FormControl,
-  FormControlLabel,
-  FormHelperText,
-} from "@mui/material";
+import Checkbox, { CheckboxProps } from "@mui/material/Checkbox";
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
 
 type Props<T extends FieldValues> = {
   name: Path<T>;

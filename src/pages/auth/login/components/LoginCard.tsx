@@ -1,5 +1,5 @@
 import { BotuIcon } from "@/components/custom/icons";
-import { styled } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { LoginFormProvider } from ".";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
