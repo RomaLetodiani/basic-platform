@@ -103,7 +103,7 @@ const LoginForm = () => {
           startIcon={<GoogleIcon />}
           onClick={() => console.log("Sign in with Google")}
         >
-          Sign in with Google
+          Sign in with Google&emsp;
         </Button>
         <Button
           fullWidth
