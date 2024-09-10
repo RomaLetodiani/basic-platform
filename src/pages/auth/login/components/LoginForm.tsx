@@ -12,6 +12,7 @@ import Divider from "@mui/material/Divider";
 import FormLabel from "@mui/material/FormLabel";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
+import { Alert } from "@mui/material";
 
 const LoginForm = () => {
   const [isForgotPasswordDialogOpen, setIsForgotPasswordDialogOpen] = useState(false);
@@ -32,6 +33,13 @@ const LoginForm = () => {
       onSubmit={onSubmit}
       sx={{ display: "flex", flexDirection: "column", width: "100%", gap: 2 }}
     >
+
+      {loginMutation.isError && (
+        <Alert severity="error"  sx={{ mt: 2 }}>
+          An Error Occurred During Login
+        </Alert>
+      )}
+
       <Stack gap={1}>
         <RHFTextField
           fullWidth
@@ -71,11 +79,6 @@ const LoginForm = () => {
         />
         <RHFCheckbox id="rememberMe" name="rememberMe" label="Remember me" />
       </Stack>
-      {loginMutation.isError && (
-        <Typography color="error" sx={{ mt: 2 }}>
-          An Error Occurred During Login
-        </Typography>
-      )}
 
       <LoadingButton
         type="submit"
