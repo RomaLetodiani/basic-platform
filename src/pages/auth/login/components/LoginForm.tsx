@@ -43,12 +43,14 @@ const LoginForm = () => {
           label="Email"
           autoFocus
           required
+          variant="outlined"
         />
         <RHFTextField
           fullWidth
           name="password"
           id="password"
           placeholder="••••••"
+          variant="outlined"
           autoComplete="current-password"
           label={
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -85,10 +87,7 @@ const LoginForm = () => {
         Sign in
       </LoadingButton>
       <Typography sx={{ textAlign: "center" }}>
-        Don't have an account?{" "}
-        <Link href="/signup" variant="body2">
-          Sign up
-        </Link>
+        Don't have an account? <Link variant="body2">Sign up</Link>
       </Typography>
 
       <Divider>
