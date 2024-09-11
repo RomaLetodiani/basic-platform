@@ -6,13 +6,13 @@ import { GoogleIcon, MicrosoftIcon } from "@/components/custom/icons";
 import { ForgotPassword, LoginFormData } from ".";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
+import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
 import FormLabel from "@mui/material/FormLabel";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
-import { Alert } from "@mui/material";
 
 const LoginForm = () => {
   const [isForgotPasswordDialogOpen, setIsForgotPasswordDialogOpen] = useState(false);
@@ -33,9 +33,8 @@ const LoginForm = () => {
       onSubmit={onSubmit}
       sx={{ display: "flex", flexDirection: "column", width: "100%", gap: 2 }}
     >
-
       {loginMutation.isError && (
-        <Alert severity="error"  sx={{ mt: 2 }}>
+        <Alert severity="error" sx={{ mt: 2 }}>
           An Error Occurred During Login
         </Alert>
       )}
@@ -49,7 +48,6 @@ const LoginForm = () => {
           autoCapitalize="email"
           autoComplete="email"
           label="Email"
-          autoFocus
           required
           variant="outlined"
         />
