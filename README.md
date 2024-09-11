@@ -37,3 +37,26 @@ Guidelines:
 - Keep page-specific components within their respective page directories
 - Use shared components when possible to maintain consistency
 - Create custom hooks for page-specific logic and data fetching
+
+### 4. MUI components, utilities and types should be imported with absolute import
+
+Bad Example:
+
+```
+import { Box, Link, Alert} from "@mui/material";
+import Alert from "@mui/material/Alert";
+```
+
+Good Example:
+
+```
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import Alert from "@mui/material/Alert";
+```
+
+Explanation:
+
+- Readability: It makes the imports more explicit and easier to understand which components are being used.
+- Tree Shaking: This practice helps with tree shaking, allowing unused code to be eliminated during the build process.
+- Absolute Imports: Importing each component individually from its specific path ensures that only the necessary code is included in the bundle, which can improve performance and reduce bundle size.
