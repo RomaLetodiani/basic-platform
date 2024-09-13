@@ -1,7 +1,8 @@
 import { platformAPI } from "@/lib";
+import { Org } from "@/types";
 
 const OrgsServices = {
-  getCurrentUserOrgs: () => platformAPI.get("orgs/current-user-orgs"),
+  getCurrentUserOrgs: (): Promise<Org[]> => platformAPI.get("orgs"),
 };
 
 export default OrgsServices;
