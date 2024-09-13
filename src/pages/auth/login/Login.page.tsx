@@ -1,11 +1,13 @@
 import Stack from "@mui/material/Stack";
 import { Theme } from "@mui/material/styles";
 import { ThemeSwitcherAbsolute } from "@/components";
-import { LoginCard, LoginContent } from "./components";
+import { Content, Cards } from "./components";
 
 const loginPageSX = [
-  { justifyContent: "space-between" },
   (theme: Theme) => ({
+    minHeight: { xs: "100%", sm: "100dvh" },
+    paddingBlock: 10,
+    paddingInline: { xs: 2, sm: 4 },
     backgroundImage: "radial-gradient(ellipse at 70% 51%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))",
     backgroundSize: "cover",
     ...theme.applyStyles("dark", {
@@ -16,20 +18,18 @@ const loginPageSX = [
 
 const LoginPage = () => {
   return (
-    <Stack direction="column" component="main" sx={loginPageSX}>
+    <Stack
+      direction={{ xs: "column-reverse", md: "row" }}
+      justifyContent="center"
+      alignItems={{ xs: "unset", md: "center" }}
+      gap={{ xs: 8, sm: 12 }}
+      component="main"
+      sx={loginPageSX}
+    >
       <ThemeSwitcherAbsolute />
-      <Stack
-        direction={{ xs: "column-reverse", md: "row" }}
-        sx={{
-          justifyContent: "center",
-          gap: { xs: 6, sm: 12 },
-          height: { xs: "100%", md: "100dvh" },
-          p: 2,
-        }}
-      >
-        <LoginContent />
-        <LoginCard />
-      </Stack>
+
+      <Content />
+      <Cards />
     </Stack>
   );
 };

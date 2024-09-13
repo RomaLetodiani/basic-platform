@@ -1,9 +1,5 @@
-import { BotuIcon } from "@/components/custom/icons";
 import { styled } from "@mui/material/styles";
-import { LoginFormProvider } from ".";
-import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import Typography from "@mui/material/Typography";
 
 const StyledCard = styled(Card)(({ theme }) => ({
   display: "flex",
@@ -24,22 +20,4 @@ const StyledCard = styled(Card)(({ theme }) => ({
   }),
 }));
 
-const LoginCard = () => {
-  return (
-    <StyledCard variant="outlined">
-      <Box sx={{ display: { xs: "flex", md: "none" } }}>
-        <BotuIcon />
-      </Box>
-      <Typography
-        component="h1"
-        variant="h4"
-        sx={{ width: "100%", fontSize: "clamp(2rem, 10vw, 2.15rem)" }}
-      >
-        Sign in
-      </Typography>
-      <LoginFormProvider />
-    </StyledCard>
-  );
-};
-
-export default LoginCard;
+export default StyledCard;

@@ -3,9 +3,17 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { loginContentItems } from "../utils";
 
-const LoginContent = () => {
+const Content = () => {
   return (
-    <Stack sx={{ flexDirection: "column", alignSelf: "center", gap: 4, maxWidth: 450 }}>
+    <Stack
+      sx={{
+        flexDirection: "column",
+        alignSelf: "center",
+        gap: 4,
+        maxWidth: 450,
+        flex: { xs: "unset", sm: 1 },
+      }}
+    >
       <Box sx={{ display: { xs: "none", md: "flex" } }}>{/*<BotuIcon />*/}</Box>
       {loginContentItems.map((item, index) => (
         <Stack key={index} direction="row" sx={{ gap: 2 }}>
@@ -24,4 +32,4 @@ const LoginContent = () => {
   );
 };
 
-export default LoginContent;
+export default Content;
