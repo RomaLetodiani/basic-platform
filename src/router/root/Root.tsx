@@ -6,8 +6,11 @@ const Root = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    localStorage.setItem("redirectedFrom", pathname);
-  }, []);
+    const redirectedFrom = localStorage.getItem("redirectedFrom");
+    if (!redirectedFrom) {
+      localStorage.setItem("redirectedFrom", pathname);
+    }
+  }, [pathname]);
 
   return (
     <Suspense fallback={<RootSuspense />}>

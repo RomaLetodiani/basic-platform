@@ -3,7 +3,7 @@ import { useFormContext } from "react-hook-form";
 import { useAuthMutations } from "@/server/mutation";
 import { RHFCheckbox, RHFTextField } from "@/components/RHF";
 import { GoogleIcon, MicrosoftIcon } from "@/components/custom/icons";
-import { ForgotPassword, LoginFormData } from "..";
+import { ForgotPassword, LoginFormData } from ".";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Alert from "@mui/material/Alert";

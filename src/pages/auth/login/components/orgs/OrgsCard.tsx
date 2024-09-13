@@ -16,13 +16,11 @@ import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 const OrgsCard = () => {
   const setLastOrgId = OrgStore((state) => state.setLastOrgId);
   const navigate = useNavigate();
-  // const { data: orgs, isPending, isError } = useOrgsQuery();
+  const { data: orgs, isPending, isError } = useOrgsQuery();
 
-  // if (isPending) return <div>Loading...</div>;
+  if (isPending) return <div>Loading...</div>;
 
-  // if (isError) return <div>Error</div>;
-
-  const orgs = [];
+  if (isError) return <div>Error</div>;
 
   const handleOrgClick = async (orgId: string) => {
     await setLastOrgId(orgId).then(() => {
