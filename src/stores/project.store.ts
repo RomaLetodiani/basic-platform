@@ -1,23 +1,23 @@
 import { create } from "zustand";
 
 interface IProjectStore {
-  latestProjectId: string;
-  setLatestProjectId: (latestProjectId: string) => void;
+  lastProjectId: string;
+  setLastProjectId: (lastProjectId: string) => void;
 }
 
 const ProjectStore = create<IProjectStore>((set) => ({
-  latestProjectId: "",
-  setLatestProjectId: (latestProjectId: string) => {
+  lastProjectId: "",
+  setLastProjectId: (lastProjectId: string) => {
     // TODO: Check Permissions
-    set({ latestProjectId });
-    localStorage.setItem("latestProjectId", latestProjectId);
+    set({ lastProjectId });
+    localStorage.setItem("lastProjectId", lastProjectId);
   },
 }));
 
 export default ProjectStore;
 
-const latestProjectId = localStorage.getItem("latestProjectId");
+const lastProjectId = localStorage.getItem("lastProjectId");
 
-if (latestProjectId) {
-  ProjectStore.getState().setLatestProjectId(latestProjectId);
+if (lastProjectId) {
+  ProjectStore.getState().setLastProjectId(lastProjectId);
 }
