@@ -19,13 +19,18 @@ const Router = createBrowserRouter([
         element: <ProtectedRoute />,
         children: [
           {
-            element: <Navigate to="/orgs" />,
+            index: true,
+            element: <Navigate to="orgs" />,
+          },
+          {
+            path: "orgs",
+            element: <OrgsPage />,
             children: [
               {
-                path: "/orgs/:orgId",
-                element: <OrgsPage />,
+                path: ":orgId",
                 children: [
                   {
+                    index: true,
                     element: <OrgOverviewPage />,
                   },
                   {
