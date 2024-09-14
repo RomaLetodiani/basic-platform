@@ -2,13 +2,14 @@ import { useMutation } from "@tanstack/react-query";
 import { AuthServices } from "@/services";
 import { useCallback } from "react";
 import { AuthStore } from "@/stores";
+import { Tokens } from "@/types";
 
 const useAuthMutations = () => {
   const setTokens = AuthStore((state) => state.setTokens);
 
   const onSuccess = useCallback(
-    (accessToken: string) => {
-      setTokens(accessToken);
+    (tokens: Tokens) => {
+      setTokens(tokens);
       console.log("Login successful");
     },
     [setTokens],
@@ -25,7 +26,7 @@ const useAuthMutations = () => {
     onError,
   });
 
-  const googleLoginMutation = useMutation<string, Error, string>({
+  const googleLoginMutation = useMutation<Tokens, Error, string>({
     mutationFn: AuthServices.googleLogin,
     onSuccess,
     onError,
