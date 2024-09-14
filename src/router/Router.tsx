@@ -1,7 +1,11 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
-import { AuthRoute, ProtectedRoute } from "./routes";
-import { LoginPage } from "@/pages/auth";
 
+// Pages imports
+import { LoginPage } from "@/pages/auth";
+import { ErrorPage } from "@/pages";
+
+// Root imports
+import { AuthRoute, ProtectedRoute } from "./routes";
 import Root from "./root/Root";
 
 const Router = createBrowserRouter([
@@ -24,7 +28,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <Navigate to="/" />,
+        element: <ErrorPage />,
       },
     ],
   },
