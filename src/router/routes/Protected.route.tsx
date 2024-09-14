@@ -5,18 +5,7 @@ const ProtectedRoute = () => {
   const isLoggedIn = AuthStore((state) => state.isLoggedIn);
   const latestOrgId = OrgStore((state) => state.lastOrgId);
 
-  const redirectedFrom = localStorage.getItem("redirectedFrom") ?? "/";
-
-  return isLoggedIn && latestOrgId ? (
-    <Outlet />
-  ) : (
-    <Navigate
-      to="/login"
-      state={{
-        from: redirectedFrom,
-      }}
-    />
-  );
+  return isLoggedIn && latestOrgId ? <Outlet /> : <Navigate to="/login" />;
 };
 
 export default ProtectedRoute;
