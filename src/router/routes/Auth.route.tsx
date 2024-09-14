@@ -8,7 +8,17 @@ const AuthRoute = () => {
   const location = useLocation();
   const from = location.state?.from ?? "/";
 
-  return isLoggedIn && lastOrgId && lastProjectId ? <Navigate to={from} /> : <Outlet />;
+  if (!isLoggedIn) {
+    return <Outlet />; // Allow access if not logged in (for public routes)
+  }
+
+  // Redirect based on Org and Project IDs
+  if (lastOrgId) {
+    const targetPath = lastProjectId ? from : `/orgs/${lastOrgId}`;
+    return <Navigate to={targetPath} />;
+  }
+
+  return <Outlet />; // Default behavior if no specific redirect
 };
 
 export default AuthRoute;
