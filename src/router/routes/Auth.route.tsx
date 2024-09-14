@@ -6,7 +6,7 @@ const AuthRoute = () => {
   const lastOrgId = OrgStore((state) => state.lastOrgId);
   const latestProjectId = ProjectStore((state) => state.latestProjectId);
   const location = useLocation();
-  const from = location.state.from;
+  const from = location.state?.from;
 
   return isLoggedIn && lastOrgId && latestProjectId ? <Navigate to={from} /> : <Outlet />;
 };
