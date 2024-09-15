@@ -1,12 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { useProjectNavigate } from "./hooks";
+import { Menu } from "./components";
 
 const ProjectLayout = () => {
-  useProjectNavigate();
-
   return (
     <div>
-      <div>Project layout</div>
+      <Menu />
       <div>
         <Outlet />
       </div>
