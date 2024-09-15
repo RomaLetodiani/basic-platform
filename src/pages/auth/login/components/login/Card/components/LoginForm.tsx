@@ -18,13 +18,14 @@ import FormLabel from "@mui/material/FormLabel";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useMsal } from "@azure/msal-react";
+import { useGoogleLogin } from "@react-oauth/google";
 
 const LoginForm = () => {
   const [isForgotPasswordDialogOpen, setIsForgotPasswordDialogOpen] = useState(false);
   const closeForgotPasswordDialog = () => setIsForgotPasswordDialogOpen(false);
   const openForgotPasswordDialog = () => setIsForgotPasswordDialogOpen(true);
 
-  const { localLoginMutation } = useAuthMutations();
+  const { localLoginMutation, googleLoginMutation, microsoftLoginMutation } = useAuthMutations();
 
   const { instance } = useMsal();
 
@@ -36,8 +37,12 @@ const LoginForm = () => {
 
   const handleMicrosoftLogin = async () => {
     const response = await instance.loginPopup();
-    console.log(response);
+    microsoftLoginMutation.mutate(response.accessToken);
   };
+
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: (response) => googleLoginMutation.mutate(response.access_token),
+  });
 
   return (
     <Box
@@ -114,7 +119,7 @@ const LoginForm = () => {
           fullWidth
           variant="outlined"
           startIcon={<GoogleIcon />}
-          onClick={() => console.log("Sign in with Google")}
+          onClick={() => handleGoogleLogin()}
         >
           Sign in with Google&emsp;
         </Button>

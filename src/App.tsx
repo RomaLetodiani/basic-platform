@@ -12,6 +12,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { msalConfig } from "@/authConfig.ts";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { MsalProvider } from "@azure/msal-react";
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import env from "@env";
 
 // Create a client
 const queryClient = new QueryClient();
@@ -23,13 +25,15 @@ const App = () => {
 
   return (
     <MsalProvider instance={msalInstance}>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={platformTheme}>
-          <CssBaseline />
-          <ReactQueryDevtools initialIsOpen={false} position="bottom" />
-          <RouterProvider router={Router} />
-        </ThemeProvider>
-      </QueryClientProvider>
+      <GoogleOAuthProvider clientId={env.VITE_GOOGLE_CLIENT_ID}>
+        <QueryClientProvider client={queryClient}>
+          <ThemeProvider theme={platformTheme}>
+            <CssBaseline />
+            <ReactQueryDevtools initialIsOpen={false} position="bottom" />
+            <RouterProvider router={Router} />
+          </ThemeProvider>
+        </QueryClientProvider>
+      </GoogleOAuthProvider>
     </MsalProvider>
   );
 };
