@@ -12,7 +12,7 @@ const AuthRoute = () => {
 
   // Redirect based on Org and Project IDs
   if (lastOrgId) {
-    const targetPath = `/org/${lastOrgId}${lastProjectId ? `/project/${lastProjectId}` : ""}`;
+    const targetPath = `/orgs/${lastOrgId}${lastProjectId ? `/projects/${lastProjectId}` : ""}`;
     return <Navigate to={targetPath} />;
   }
 

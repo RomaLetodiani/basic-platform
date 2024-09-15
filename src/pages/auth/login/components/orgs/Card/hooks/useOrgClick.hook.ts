@@ -7,7 +7,7 @@ const useOrgClick = () => {
 
   const handleOrgClick = async (orgId: string) => {
     await setLastOrgId(orgId).then(() => {
-      navigate(`/org/${orgId}`);
+      navigate(`/orgs/${orgId}`);
     });
   };
 

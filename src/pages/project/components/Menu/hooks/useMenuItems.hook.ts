@@ -10,7 +10,7 @@ const useMenuItems = () => {
     },
     {
       title: "Chats",
-      path: `${lastProjectId}/chat`,
+      path: `${lastProjectId}/chats`,
     },
     {
       title: "Knowledge Base",

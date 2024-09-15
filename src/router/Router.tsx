@@ -39,10 +39,10 @@ const Router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="org" />,
+            element: <Navigate to="orgs" />,
           },
           {
-            path: "org",
+            path: "orgs",
             element: <OrgLayout />,
             children: [
               {
@@ -53,7 +53,7 @@ const Router = createBrowserRouter([
                     element: <OrgOverviewPage />,
                   },
                   {
-                    path: "project",
+                    path: "projects",
                     element: <OrgProjectsPage />,
                   },
                   {
@@ -65,7 +65,7 @@ const Router = createBrowserRouter([
             ],
           },
           {
-            path: "org/:orgId/project",
+            path: "orgs/:orgId/projects",
             element: <ProjectLayout />,
             children: [
               {
@@ -76,7 +76,7 @@ const Router = createBrowserRouter([
                     element: <ProjectOverviewPage />,
                   },
                   {
-                    path: "chat",
+                    path: "chats",
                     element: <ChatPage />,
                     children: [
                       {
