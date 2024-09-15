@@ -4,11 +4,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
-import CircularProgress from "@mui/material/CircularProgress";
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 
 import { useOrgsQuery } from "@/server/query";
 import { useOrgClick } from "../hooks";
+import { Loading } from "@/components";
 
 const OrgsRender = () => {
   const { data, isPending, isError } = useOrgsQuery();
@@ -16,7 +16,7 @@ const OrgsRender = () => {
   const handleOrgClick = useOrgClick();
 
   if (!isPending) {
-    return <CircularProgress />;
+    return <Loading />;
   }
 
   if (isError) {
