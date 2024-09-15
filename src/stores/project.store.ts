@@ -18,10 +18,15 @@ const ProjectStore = create<IProjectStore>((set) => ({
         console.log("Permissions checked successfully for project");
         // throw new Error("Permissions checked successfully for project");
       })
-      .finally(() => {
-        set({ lastProjectId, loading: false });
+      .catch(() => {
+        console.log("Permissions checked failed for project");
+        throw new Error("Permissions checked failed for project");
+      })
+      .then(() => {
+        set({ lastProjectId });
         localStorage.setItem("lastProjectId", lastProjectId);
-      });
+      })
+      .finally(() => set({ loading: false }));
   },
 }));
 

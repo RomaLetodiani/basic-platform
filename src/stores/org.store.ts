@@ -20,10 +20,15 @@ const OrgStore = create<IOrgStore>((set) => ({
         console.log("Permissions checked successfully for org");
         // throw new Error("Permissions checked successfully for org");
       })
-      .finally(() => {
-        set({ lastOrgId, loading: false });
+      .catch(() => {
+        console.log("Permissions checked failed for org");
+        throw new Error("Permissions checked failed for org");
+      })
+      .then(() => {
+        set({ lastOrgId });
         localStorage.setItem("lastOrgId", lastOrgId);
-      });
+      })
+      .finally(() => set({ loading: false }));
   },
 }));
 
