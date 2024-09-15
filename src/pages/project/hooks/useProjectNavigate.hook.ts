@@ -9,6 +9,8 @@ const useProjectNavigate = () => {
   useEffect(() => {
     if (lastProjectId) {
       navigate(`${lastProjectId}`);
+    } else {
+      navigate("/org");
     }
   }, [lastProjectId, navigate]);
 };
