@@ -24,14 +24,14 @@ const LoginForm = () => {
   const closeForgotPasswordDialog = () => setIsForgotPasswordDialogOpen(false);
   const openForgotPasswordDialog = () => setIsForgotPasswordDialogOpen(true);
 
-  const { loginMutation } = useAuthMutations();
+  const { localLoginMutation } = useAuthMutations();
 
   const { instance } = useMsal();
 
   const { handleSubmit } = useFormContext<LoginFormData>();
 
   const onSubmit = handleSubmit((data: LoginFormData) => {
-    loginMutation.mutate(data);
+    localLoginMutation.mutate(data);
   });
 
   const handleMicrosoftLogin = async () => {
@@ -45,7 +45,7 @@ const LoginForm = () => {
       onSubmit={onSubmit}
       sx={{ display: "flex", flexDirection: "column", width: "100%", gap: 2 }}
     >
-      {loginMutation.isError && (
+      {localLoginMutation.isError && (
         <Alert severity="error" sx={{ mt: 2 }}>
           An Error Occurred During Login
         </Alert>
@@ -95,7 +95,7 @@ const LoginForm = () => {
         fullWidth
         variant="contained"
         color="secondary"
-        loading={loginMutation.isPending}
+        loading={localLoginMutation.isPending}
       >
         Sign in
       </LoadingButton>

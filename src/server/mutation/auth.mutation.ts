@@ -20,7 +20,6 @@ const useAuthMutations = () => {
     console.error("❌ ~ AuthServices.login ~ error", error);
   }, []);
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const localLoginMutation = useMutation<Tokens, Error, LoginFormData>({
     mutationFn: AuthServices.localLogin,
     onSuccess,
