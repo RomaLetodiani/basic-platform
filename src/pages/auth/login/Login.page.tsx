@@ -6,6 +6,7 @@ import { Content, Cards } from "./components";
 const loginPageSX = [
   (theme: Theme) => ({
     minHeight: { xs: "100%", sm: "100dvh" },
+    minWidth: 300,
     paddingBlock: 10,
     paddingInline: { xs: 2, sm: 4 },
     backgroundImage: "radial-gradient(ellipse at 70% 51%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))",

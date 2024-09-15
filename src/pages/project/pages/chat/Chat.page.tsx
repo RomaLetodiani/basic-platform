@@ -26,9 +26,11 @@ import FormatColorFillIcon from "@mui/icons-material/FormatColorFill";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import { Search } from "@/components";
 
-const ChatsPage = () => {
+// TODO: Refactor this whole component and divide it into smaller components
+const ChatPage = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
   const [formats, setFormats] = useState(() => ["bold", "italic"]);
+  console.log("🚀 ~ ChatPage ~ formats:", formats);
   const handleFormat = (_: MouseEvent<HTMLElement>, newFormats: string[]) => {
     setFormats(newFormats);
   };
@@ -36,7 +38,7 @@ const ChatsPage = () => {
     <>
       <Box
         sx={{
-          display: "fSlex",
+          display: "flex",
           flexDirection: "column",
           height: "100%",
           width: "100%",
@@ -261,4 +263,4 @@ const ChatsPage = () => {
   );
 };
 
-export default ChatsPage;
+export default ChatPage;

@@ -1,8 +1,9 @@
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
+
+import { OrgsCard } from "./orgs";
+import { LoginCard } from "./login";
 import { useAnimateFormsHook } from "../hooks";
-import LoginCard from "./login/LoginCard";
-import OrgsCard from "./orgs/OrgsCard";
 
 const Cards = () => {
   const { showLoginCard, showOrgsCard } = useAnimateFormsHook();
