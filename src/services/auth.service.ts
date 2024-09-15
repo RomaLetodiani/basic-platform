@@ -2,12 +2,14 @@ import { platformAPI, refreshTokenPlatformApi } from "@/lib";
 import { Tokens } from "@/types";
 
 const AuthServices = {
-  localLogin: (body: { email: string; password: string }): Promise<Tokens> => {
+  localLogin: async (body: { email: string; password: string }): Promise<Tokens> => {
     const formData = new FormData();
     formData.append("username", body.email);
     formData.append("password", body.password);
 
-    return platformAPI.post("auth/local/login", formData);
+    const resp = await platformAPI.post("auth/local/login", formData);
+
+    return resp.data;
   },
   googleLogin: (access_token: string): Promise<Tokens> =>
     platformAPI.post("auth/google/login", { access_token }),

@@ -5,7 +5,7 @@ interface IAuthStore {
   accessToken: string;
   refreshToken: string;
   isLoggedIn: boolean;
-  setTokens: ({ accessToken, refreshToken }: Tokens) => void;
+  setTokens: ({ access_token, refresh_token }: Tokens) => void;
   clearTokens: () => void;
 }
 
@@ -13,11 +13,11 @@ const AuthStore = create<IAuthStore>((set) => ({
   accessToken: "",
   refreshToken: "",
   isLoggedIn: false,
-  setTokens: ({ accessToken, refreshToken }) => {
+  setTokens: ({ access_token, refresh_token }) => {
     // TODO: Maybe decode access token if there will be data in it
-    set({ accessToken, refreshToken, isLoggedIn: true });
-    localStorage.setItem("accessToken", accessToken);
-    localStorage.setItem("refreshToken", refreshToken);
+    set({ accessToken: access_token, refreshToken: refresh_token, isLoggedIn: true });
+    localStorage.setItem("accessToken", access_token);
+    localStorage.setItem("refreshToken", refresh_token);
   },
   clearTokens: () => {
     set({ accessToken: "", isLoggedIn: false });
@@ -32,5 +32,5 @@ const accessToken = localStorage.getItem("accessToken");
 const refreshToken = localStorage.getItem("refreshToken");
 
 if (accessToken && refreshToken) {
-  AuthStore.getState().setTokens({ accessToken, refreshToken });
+  AuthStore.getState().setTokens({ access_token: accessToken, refresh_token: refreshToken });
 }

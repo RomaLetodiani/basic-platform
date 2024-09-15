@@ -3,13 +3,14 @@ import { AuthServices } from "@/services";
 import { useCallback } from "react";
 import { AuthStore } from "@/stores";
 import { Tokens } from "@/types";
+import { LoginFormData } from "@/pages/auth/login/components/login/Card/components";
 
 const useAuthMutations = () => {
   const setTokens = AuthStore((state) => state.setTokens);
 
   const onSuccess = useCallback(
-    (tokens: Tokens) => {
-      setTokens(tokens);
+    ({ access_token, refresh_token }: Tokens) => {
+      setTokens({ access_token, refresh_token });
       console.log("Login successful");
     },
     [setTokens],
@@ -20,7 +21,7 @@ const useAuthMutations = () => {
   }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const loginMutation = useMutation<any, Error, any>({
+  const loginMutation = useMutation<Tokens, Error, LoginFormData>({
     mutationFn: AuthServices.localLogin,
     onSuccess,
     onError,

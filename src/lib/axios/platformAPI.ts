@@ -34,7 +34,7 @@ refreshTokenPlatformApi.interceptors.request.use((config) => {
 });
 
 platformAPI.interceptors.response.use(
-  ({ data }) => data.data,
+  (resp) => resp,
   async (error: AxiosError) => {
     const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
     if (error.response?.status === 401 && originalRequest && !originalRequest._retry) {
@@ -51,7 +51,7 @@ platformAPI.interceptors.response.use(
 
         AuthStore.getState().setTokens(tokens);
 
-        originalRequest.headers["Authorization"] = `Bearer ${tokens.accessToken}`;
+        originalRequest.headers["Authorization"] = `Bearer ${tokens.access_token}`;
 
         return platformAPI(originalRequest);
       } catch (refreshError) {
