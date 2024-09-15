@@ -1,7 +1,7 @@
 import { platformAPI } from "@/lib";
 
-const ProjectsServices = {
+const ProjectServices = {
   getCurrentOrgProjects: (orgId: string) => platformAPI.get(`projects/${orgId}`),
 };
 
-export default ProjectsServices;
+export default ProjectServices;

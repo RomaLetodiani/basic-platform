@@ -20,10 +20,10 @@ const Router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Navigate to="orgs" />,
+            element: <Navigate to="org" />,
           },
           {
-            path: "orgs",
+            path: "org",
             element: <OrgLayout />,
             children: [
               {

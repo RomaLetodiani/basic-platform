@@ -8,9 +8,9 @@ const useOrgNavigate = () => {
 
   useEffect(() => {
     if (lastOrgId) {
-      navigate(`/orgs/${lastOrgId}`);
+      navigate(`/org/${lastOrgId}`);
     } else {
-      navigate("/orgs");
+      navigate("/org");
     }
   }, [lastOrgId, navigate]);
 };
