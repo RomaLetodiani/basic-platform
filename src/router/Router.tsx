@@ -53,7 +53,7 @@ const Router = createBrowserRouter([
                     element: <OrgOverviewPage />,
                   },
                   {
-                    path: "projects",
+                    path: "project",
                     element: <OrgProjectsPage />,
                   },
                   {
@@ -76,7 +76,7 @@ const Router = createBrowserRouter([
                     element: <ProjectOverviewPage />,
                   },
                   {
-                    path: "chats",
+                    path: "chat",
                     element: <ChatPage />,
                     children: [
                       {
