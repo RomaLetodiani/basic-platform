@@ -17,6 +17,7 @@ import Divider from "@mui/material/Divider";
 import FormLabel from "@mui/material/FormLabel";
 import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
+import { useMsal } from "@azure/msal-react";
 
 const LoginForm = () => {
   const [isForgotPasswordDialogOpen, setIsForgotPasswordDialogOpen] = useState(false);
@@ -25,11 +26,18 @@ const LoginForm = () => {
 
   const { loginMutation } = useAuthMutations();
 
+  const { instance } = useMsal();
+
   const { handleSubmit } = useFormContext<LoginFormData>();
 
   const onSubmit = handleSubmit((data: LoginFormData) => {
     loginMutation.mutate(data);
   });
+
+  const handleMicrosoftLogin = async () => {
+    const response = await instance.loginPopup();
+    console.log(response);
+  };
 
   return (
     <Box
@@ -114,7 +122,7 @@ const LoginForm = () => {
           fullWidth
           variant="outlined"
           startIcon={<MicrosoftIcon />}
-          onClick={() => console.log("Sign in with Microsoft")}
+          onClick={() => handleMicrosoftLogin()}
         >
           Sign in with Microsoft
         </Button>

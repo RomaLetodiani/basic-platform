@@ -21,7 +21,7 @@ const useAuthMutations = () => {
   }, []);
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const loginMutation = useMutation<Tokens, Error, LoginFormData>({
+  const localLoginMutation = useMutation<Tokens, Error, LoginFormData>({
     mutationFn: AuthServices.localLogin,
     onSuccess,
     onError,
@@ -33,7 +33,13 @@ const useAuthMutations = () => {
     onError,
   });
 
-  return { loginMutation, googleLoginMutation };
+  const microsoftLoginMutation = useMutation<Tokens, Error, string>({
+    mutationFn: AuthServices.microsoftLogin,
+    onSuccess,
+    onError,
+  });
+
+  return { localLoginMutation, googleLoginMutation, microsoftLoginMutation };
 };
 
 export default useAuthMutations;

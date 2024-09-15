@@ -1,9 +1,8 @@
 import Box from "@mui/material/Box";
-import Collapse from "@mui/material/Collapse";
-
 import { OrgsCard } from "./orgs";
 import { LoginCard } from "./login";
 import { useAnimateFormsHook } from "../hooks";
+import { Grow } from "@mui/material";
 
 const Cards = () => {
   const { showLoginCard, showOrgsCard } = useAnimateFormsHook();
@@ -18,19 +17,28 @@ const Cards = () => {
         position: "relative",
       }}
     >
-      <Collapse
+      <Grow
         in={showLoginCard}
-        timeout={300}
-        sx={{
+        style={{
           position: "absolute",
           width: "100%",
         }}
       >
-        <LoginCard />
-      </Collapse>
-      <Collapse in={showOrgsCard} timeout={300} style={{ position: "absolute", width: "100%" }}>
-        <OrgsCard />
-      </Collapse>
+        <div>
+          <LoginCard />
+        </div>
+      </Grow>
+      <Grow
+        in={showOrgsCard}
+        style={{
+          position: "absolute",
+          width: "100%",
+        }}
+      >
+        <div>
+          <OrgsCard />
+        </div>
+      </Grow>
     </Box>
   );
 };
