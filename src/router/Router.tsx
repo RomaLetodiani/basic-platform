@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 
 // Pages imports
-import { OrgOverviewPage, OrgProjectsPage, OrgsPage, OrgTeamPage } from "@/pages/orgs";
+import { OrgOverviewPage, OrgProjectsPage, OrgTeamPage, OrgLayout } from "@/pages/org";
 import { LoginPage } from "@/pages/auth";
 import { ErrorPage } from "@/pages";
 
@@ -24,7 +24,7 @@ const Router = createBrowserRouter([
           },
           {
             path: "orgs",
-            element: <OrgsPage />,
+            element: <OrgLayout />,
             children: [
               {
                 path: ":orgId",

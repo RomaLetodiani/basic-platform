@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { useOrgNavigate } from "./hooks";
 
-const OrgsPage = () => {
+const OrgLayout = () => {
   useOrgNavigate();
 
   return (
     <div>
-      <div>orgs layout</div>
+      <div>org layout</div>
       <div>
         <Outlet />
       </div>
@@ -14,4 +14,4 @@ const OrgsPage = () => {
   );
 };
 
-export default OrgsPage;
+export default OrgLayout;

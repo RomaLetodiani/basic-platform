@@ -12,7 +12,7 @@ const useOrgNavigate = () => {
     } else {
       navigate("/orgs");
     }
-  }, [lastOrgId]);
+  }, [lastOrgId, navigate]);
 };
 
 export default useOrgNavigate;
