@@ -15,7 +15,7 @@ const OrgsRender = () => {
   const orgs = data;
   const handleOrgClick = useOrgClick();
 
-  if (!isPending) {
+  if (isPending) {
     return <Loading />;
   }
 
