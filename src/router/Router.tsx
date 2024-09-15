@@ -1,13 +1,32 @@
+// React Router imports
 import { createBrowserRouter, Navigate } from "react-router-dom";
-
-// Pages imports
-import { OrgOverviewPage, OrgProjectsPage, OrgTeamPage, OrgLayout } from "@/pages/org";
-import { LoginPage } from "@/pages/auth";
-import { ErrorPage } from "@/pages";
 
 // Root imports
 import { AuthRoute, ProtectedRoute } from "./routes";
 import Root from "./root/Root";
+
+/* Pages imports */
+
+// Orgs
+import { OrgLayout, OrgOverviewPage, OrgProjectsPage, OrgTeamPage } from "@/pages/org";
+
+// Projects
+import {
+  ProjectLayout,
+  ChatPage,
+  ChatViewPage,
+  ProjectOverviewPage,
+  KnowledgeBase,
+  DialogFlowPage,
+  Integrations,
+  Extensions,
+} from "@/pages/project";
+
+// Auth
+import { LoginPage } from "@/pages/auth";
+
+// Error
+import { ErrorPage } from "@/pages";
 
 const Router = createBrowserRouter([
   {
@@ -40,6 +59,47 @@ const Router = createBrowserRouter([
                   {
                     path: "team",
                     element: <OrgTeamPage />,
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            path: "org/:orgId/project",
+            element: <ProjectLayout />,
+            children: [
+              {
+                path: ":projectId",
+                children: [
+                  {
+                    index: true,
+                    element: <ProjectOverviewPage />,
+                  },
+                  {
+                    path: "chats",
+                    element: <ChatPage />,
+                    children: [
+                      {
+                        path: ":chatId",
+                        element: <ChatViewPage />,
+                      },
+                    ],
+                  },
+                  {
+                    path: "knowledge-base",
+                    element: <KnowledgeBase />,
+                  },
+                  {
+                    path: "dialog-flow",
+                    element: <DialogFlowPage />,
+                  },
+                  {
+                    path: "integrations",
+                    element: <Integrations />,
+                  },
+                  {
+                    path: "extensions",
+                    element: <Extensions />,
                   },
                 ],
               },
