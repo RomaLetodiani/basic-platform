@@ -11,9 +11,11 @@ const AuthServices = {
     return await platformAPI.post("auth/local/login", formData);
   },
 
-  googleLogin: (access_token: string): Promise<Tokens> => platformAPI.post("auth/google/login", { token: access_token }),
+  googleAuth: (access_token: string): Promise<Tokens> =>
+    platformAPI.post("auth/google", { token: access_token }),
 
-  microsoftLogin: (accessToken: string): Promise<Tokens> => platformAPI.post("auth/microsoft/login", { token: accessToken }),
+  microsoftAuth: (accessToken: string): Promise<Tokens> =>
+    platformAPI.post("auth/microsoft", { token: accessToken }),
   getCurrentUser: () => platformAPI.get("auth/me"),
 
   refreshTokens: (): Promise<Tokens> => refreshTokenPlatformApi.post("auth/refresh"),

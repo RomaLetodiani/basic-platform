@@ -19,13 +19,14 @@ import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useMsal } from "@azure/msal-react";
 import { useGoogleLogin } from "@react-oauth/google";
+import { msalLoginRequest } from "@/authConfig.ts";
 
 const LoginForm = () => {
   const [isForgotPasswordDialogOpen, setIsForgotPasswordDialogOpen] = useState(false);
   const closeForgotPasswordDialog = () => setIsForgotPasswordDialogOpen(false);
   const openForgotPasswordDialog = () => setIsForgotPasswordDialogOpen(true);
 
-  const { localLoginMutation, googleLoginMutation, microsoftLoginMutation } = useAuthMutations();
+  const { localLoginMutation, googleAuthMutation, microsoftAuthMutation } = useAuthMutations();
 
   const { instance } = useMsal();
 
@@ -36,12 +37,12 @@ const LoginForm = () => {
   });
 
   const handleMicrosoftLogin = async () => {
-    const response = await instance.loginPopup();
-    microsoftLoginMutation.mutate(response.accessToken);
+    const response = await instance.loginPopup(msalLoginRequest);
+    microsoftAuthMutation.mutate(response.accessToken);
   };
 
   const handleGoogleLogin = useGoogleLogin({
-    onSuccess: (response) => googleLoginMutation.mutate(response.access_token),
+    onSuccess: (response) => googleAuthMutation.mutate(response.access_token),
   });
 
   return (

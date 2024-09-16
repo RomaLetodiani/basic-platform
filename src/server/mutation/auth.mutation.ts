@@ -26,19 +26,19 @@ const useAuthMutations = () => {
     onError,
   });
 
-  const googleLoginMutation = useMutation<Tokens, Error, string>({
-    mutationFn: AuthServices.googleLogin,
+  const googleAuthMutation = useMutation<Tokens, Error, string>({
+    mutationFn: AuthServices.googleAuth,
     onSuccess,
     onError,
   });
 
-  const microsoftLoginMutation = useMutation<Tokens, Error, string>({
-    mutationFn: AuthServices.microsoftLogin,
+  const microsoftAuthMutation = useMutation<Tokens, Error, string>({
+    mutationFn: AuthServices.microsoftAuth,
     onSuccess,
     onError,
   });
 
-  return { localLoginMutation, googleLoginMutation, microsoftLoginMutation };
+  return { localLoginMutation, googleAuthMutation, microsoftAuthMutation };
 };
 
 export default useAuthMutations;

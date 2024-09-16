@@ -11,3 +11,8 @@ export const msalConfig = {
     storeAuthStateInCookie: false,
   },
 };
+
+export const msalLoginRequest = {
+  scopes: ["User.Read"],
+  prompt: "select_account"
+};
