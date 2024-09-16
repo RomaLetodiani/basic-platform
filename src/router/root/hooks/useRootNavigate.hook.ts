@@ -48,8 +48,8 @@ const useRootNavigate = () => {
       access_token: accessToken ?? "",
       refresh_token: refreshToken ?? "",
     })
-      .then(() => {
-        handleSetOrgAndProjectIds();
+      .then(async () => {
+        await handleSetOrgAndProjectIds();
       })
       .finally(() => {
         setOrgLoading(false);
