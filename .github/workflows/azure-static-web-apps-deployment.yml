@@ -41,6 +41,8 @@ jobs:
         env:
           VITE_PLATFORM_API_BASE_URL: ${{ vars.VITE_PLATFORM_API_BASE_URL }}
           VITE_CONVO_API_BASE_URL: ${{ vars.VITE_CONVO_API_BASE_URL }}
+          VITE_GOOGLE_CLIENT_ID: ${{ vars.VITE_GOOGLE_CLIENT_ID }}
+          VITE_MSAL_CLIENT_ID: ${{ vars.VITE_MSAL_CLIENT_ID }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
