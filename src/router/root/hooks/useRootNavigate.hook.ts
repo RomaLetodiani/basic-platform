@@ -3,7 +3,7 @@ import { useCallback, useEffect } from "react";
 import { AuthStore, OrgStore, ProjectStore } from "@/stores";
 
 const useRootNavigate = () => {
-  const isLoggedIn = AuthStore((state) => state.isLoggedIn);
+  const setTokens = AuthStore((state) => state.setTokens);
   const setLastOrgId = OrgStore((state) => state.setLastOrgId);
   const orgLoading = OrgStore((state) => state.loading);
   const setOrgLoading = OrgStore((state) => state.setLoading);
@@ -36,19 +36,31 @@ const useRootNavigate = () => {
   }, [orgId, projectId, navigate, setLastProjectId, setLastOrgId, setOrgLoading]);
 
   useEffect(() => {
-    if (!isLoggedIn) {
+    const accessToken = localStorage.getItem("accessToken");
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (!accessToken || !refreshToken) {
       setOrgLoading(false);
-      return navigate("/login");
-    } else {
-      handleSetOrgAndProjectIds();
+      return;
     }
+
+    setTokens({
+      access_token: accessToken ?? "",
+      refresh_token: refreshToken ?? "",
+    })
+      .then(() => {
+        handleSetOrgAndProjectIds();
+      })
+      .finally(() => {
+        setOrgLoading(false);
+      });
   }, [
-    isLoggedIn,
     handleSetOrgAndProjectIds,
     navigate,
     setLastOrgId,
     setLastProjectId,
     setOrgLoading,
+    setTokens,
   ]);
   return {
     orgLoading,

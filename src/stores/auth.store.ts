@@ -1,36 +1,44 @@
-import { Tokens } from "@/types";
+import { AuthServices } from "@/services";
+import { Tokens, User } from "@/types";
 import { create } from "zustand";
 
 interface IAuthStore {
   accessToken: string;
   refreshToken: string;
   isLoggedIn: boolean;
-  setTokens: ({ access_token, refresh_token }: Tokens) => void;
+  user: User | null;
+  setTokens: ({ access_token, refresh_token }: Tokens) => Promise<void>;
   clearTokens: () => void;
 }
 
-const AuthStore = create<IAuthStore>((set) => ({
+const AuthStore = create<IAuthStore>((set, get) => ({
   accessToken: "",
   refreshToken: "",
   isLoggedIn: false,
-  setTokens: ({ access_token, refresh_token }) => {
-    // TODO: Maybe decode access token if there will be data in it
-    set({ accessToken: access_token, refreshToken: refresh_token, isLoggedIn: true });
-    localStorage.setItem("accessToken", access_token);
-    localStorage.setItem("refreshToken", refresh_token);
+  user: null,
+  setTokens: async ({ access_token, refresh_token }) => {
+    if (!access_token || !refresh_token) {
+      get().clearTokens();
+      throw new Error("Access token or refresh token is missing");
+    }
+
+    await AuthServices.getCurrentUser()
+      .then((user) => {
+        set({ accessToken: access_token, refreshToken: refresh_token, isLoggedIn: true, user });
+        localStorage.setItem("accessToken", access_token);
+        localStorage.setItem("refreshToken", refresh_token);
+      })
+      .catch((error) => {
+        console.error("Error retrieving current user:", error);
+        get().clearTokens();
+        throw new Error(error);
+      });
   },
   clearTokens: () => {
-    set({ accessToken: "", isLoggedIn: false });
+    set({ accessToken: "", refreshToken: "", user: null, isLoggedIn: false });
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
   },
 }));
 
 export default AuthStore;
-
-const accessToken = localStorage.getItem("accessToken");
-const refreshToken = localStorage.getItem("refreshToken");
-
-if (accessToken && refreshToken) {
-  AuthStore.getState().setTokens({ access_token: accessToken, refresh_token: refreshToken });
-}

@@ -1,5 +1,5 @@
 import { platformAPI, refreshTokenPlatformApi } from "@/lib";
-import { Tokens } from "@/types";
+import { Tokens, User } from "@/types";
 
 const AuthServices = {
   localLogin: async (body: { email: string; password: string }): Promise<Tokens> => {
@@ -16,7 +16,7 @@ const AuthServices = {
 
   microsoftAuth: (accessToken: string): Promise<Tokens> =>
     platformAPI.post("auth/microsoft", { token: accessToken }),
-  getCurrentUser: () => platformAPI.get("auth/me"),
+  getCurrentUser: (): Promise<User> => platformAPI.get("auth/me"),
 
   refreshTokens: (): Promise<Tokens> => refreshTokenPlatformApi.post("auth/refresh"),
 };
