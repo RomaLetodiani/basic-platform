@@ -34,7 +34,7 @@ refreshTokenPlatformApi.interceptors.request.use((config) => {
 });
 
 platformAPI.interceptors.response.use(
-  (resp) => resp,
+  ({ data }) => data,
   async (error: AxiosError) => {
     const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
     if (error.response?.status === 401 && originalRequest && !originalRequest._retry) {
