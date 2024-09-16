@@ -42,7 +42,6 @@ const ChatPage = () => {
           flexDirection: "column",
           height: "100%",
           width: "100%",
-          pb: "70px",
         }}
       >
         <Stack direction={"row"} sx={{ width: "100%", pt: 1.5, pb: 3.5, px: 3 }}>
@@ -56,7 +55,7 @@ const ChatPage = () => {
 
         <Stack
           spacing={{ xs: 1, sm: 2 }}
-          sx={{ height: "100%", flexWrap: "wrap", mx: 3, pb: "70px" }}
+          sx={{ height: "calc(100% - 150px)", flexWrap: "wrap", mx: 3 }}
           direction="row"
           useFlexGap
         >
