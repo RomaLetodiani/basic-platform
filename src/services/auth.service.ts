@@ -12,13 +12,13 @@ const AuthServices = {
     return response.data;
   },
 
-  googleLogin: async (access_token: string): Promise<Tokens> => {
-    const response = await platformAPI.post("auth/google/login", { token: access_token });
+  googleAuth: async (access_token: string): Promise<Tokens> => {
+    const response = await platformAPI.post("auth/google", { token: access_token });
     return response.data;
   },
 
-  microsoftLogin: async (accessToken: string): Promise<Tokens> => {
-    const response = await platformAPI.post("auth/microsoft/login", { token: accessToken });
+  microsoftAuth: async (accessToken: string): Promise<Tokens> => {
+    const response = await platformAPI.post("auth/microsoft", { token: accessToken });
     return response.data;
   },
 
