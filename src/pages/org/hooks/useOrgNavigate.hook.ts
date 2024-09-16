@@ -13,7 +13,7 @@ const useOrgNavigate = () => {
     }
 
     if (lastOrgId) {
-      return navigate(`/org/${lastOrgId}`);
+      return navigate(`/orgs/${lastOrgId}`);
     }
 
     navigate("/login");

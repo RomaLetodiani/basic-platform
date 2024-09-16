@@ -11,7 +11,7 @@ const OrgLayout = () => {
         org layout
         <Stack spacing={2}>
           <Link to={`${orgId}`}>Overview</Link>
-          <Link to={`${orgId}/project`}>Projects</Link>
+          <Link to={`${orgId}/projects`}>Projects</Link>
           <Link to={`${orgId}/team`}>Team</Link>
         </Stack>
       </div>

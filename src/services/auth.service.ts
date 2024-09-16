@@ -14,10 +14,10 @@ const AuthServices = {
   },
 
   googleLogin: (access_token: string): Promise<Tokens> =>
-    platformAPI.post("auth/google/login", { access_token }),
+    platformAPI.post("auth/google/login", { token: access_token }),
 
-  microsoftLogin: (access_token: string): Promise<Tokens> =>
-    platformAPI.post("auth/microsoft/login", { access_token }),
+  microsoftLogin: (accessToken: string): Promise<Tokens> =>
+    platformAPI.post("auth/microsoft/login", { token: accessToken }),
 
   getCurrentUser: () => platformAPI.get("auth/me"),
 
