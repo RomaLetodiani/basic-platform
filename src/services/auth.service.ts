@@ -8,16 +8,19 @@ const AuthServices = {
     formData.append("username", body.email);
     formData.append("password", body.password);
 
-    const resp = await platformAPI.post("auth/local/login", formData);
-
-    return resp.data;
+    const response = await platformAPI.post("auth/local/login", formData);
+    return response.data;
   },
 
-  googleLogin: (access_token: string): Promise<Tokens> =>
-    platformAPI.post("auth/google/login", { token: access_token }),
+  googleLogin: async (access_token: string): Promise<Tokens> => {
+    const response = await platformAPI.post("auth/google/login", { token: access_token });
+    return response.data;
+  },
 
-  microsoftLogin: (accessToken: string): Promise<Tokens> =>
-    platformAPI.post("auth/microsoft/login", { token: accessToken }),
+  microsoftLogin: async (accessToken: string): Promise<Tokens> => {
+    const response = await platformAPI.post("auth/microsoft/login", { token: accessToken });
+    return response.data;
+  },
 
   getCurrentUser: () => platformAPI.get("auth/me"),
 

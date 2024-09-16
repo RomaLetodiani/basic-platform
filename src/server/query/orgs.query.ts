@@ -18,11 +18,5 @@ export const useOrgsQuery = () => {
     queryFn: getOrgs,
     enabled: isLoggedIn,
     ...baseQuery,
-    placeholderData: [
-      {
-        id: "va",
-        name: "Org 1",
-      },
-    ],
   });
 };
