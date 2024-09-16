@@ -8,7 +8,7 @@ import Root from "./root/Root";
 /* Pages imports */
 
 // Orgs
-import { OrgLayout, OrgOverviewPage, OrgProjectsPage, OrgTeamPage } from "@/pages/org";
+import { OrgLayout, OrgOverviewPage, OrgProjectsPage, OrgTeamPage } from "@/pages/orgs";
 
 // Projects
 import {
@@ -20,7 +20,7 @@ import {
   DialogFlowPage,
   Integrations,
   Extensions,
-} from "@/pages/project";
+} from "@/pages/projects";
 
 // Auth
 import { LoginPage } from "@/pages/auth";
