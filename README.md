@@ -44,7 +44,6 @@ Bad Example:
 
 ```
 import { Box, Link, Alert} from "@mui/material";
-import Alert from "@mui/material/Alert";
 ```
 
 Good Example:
