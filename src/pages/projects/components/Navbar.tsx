@@ -27,7 +27,7 @@ const Toolbar = styled(MuiToolbar)({
 });
 
 const Navbar = () => {
-  const { open, toggleDrawer } = useDrawer();
+  const { open, closeDrawer, openDrawer } = useDrawer();
 
   return (
     <AppBar
@@ -57,10 +57,10 @@ const Navbar = () => {
               Dashboard
             </Typography>
           </Stack>
-          <MenuButton aria-label="menu" onClick={toggleDrawer(true)}>
+          <MenuButton aria-label="menu" onClick={openDrawer}>
             <MenuRoundedIcon />
           </MenuButton>
-          <SideMenuMobile open={open} toggleDrawer={toggleDrawer} />
+          <SideMenuMobile open={open} closeDrawer={closeDrawer} />
         </Stack>
       </Toolbar>
     </AppBar>

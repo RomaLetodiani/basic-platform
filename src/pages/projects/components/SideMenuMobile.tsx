@@ -11,15 +11,15 @@ import { CardAlert, MenuContent } from ".";
 
 interface SideMenuMobileProps {
   open: boolean | undefined;
-  toggleDrawer: (newOpen: boolean) => () => void;
+  closeDrawer: () => void;
 }
 
-const SideMenuMobile = ({ open, toggleDrawer }: SideMenuMobileProps) => {
+const SideMenuMobile = ({ open, closeDrawer }: SideMenuMobileProps) => {
   return (
     <Drawer
       anchor="right"
       open={open}
-      onClose={toggleDrawer(false)}
+      onClose={closeDrawer}
       sx={{
         [`& .${drawerClasses.paper}`]: {
           backgroundImage: "none",

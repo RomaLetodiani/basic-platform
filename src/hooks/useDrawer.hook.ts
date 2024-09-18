@@ -7,11 +7,7 @@ const useDrawer = (initialValue?: boolean) => {
 
   const closeDrawer = () => setOpen(false);
 
-  const toggleDrawer = (value: boolean) => () => {
-    setOpen(value);
-  };
-
-  return { open, setOpen, openDrawer, closeDrawer, toggleDrawer };
+  return { open, setOpen, openDrawer, closeDrawer };
 };
 
 export default useDrawer;
