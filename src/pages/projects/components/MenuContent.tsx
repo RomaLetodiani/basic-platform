@@ -8,7 +8,7 @@ import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import QuestionAnswerRoundedIcon from "@mui/icons-material/QuestionAnswerRounded";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import ExtensionIcon from "@mui/icons-material/Extension";
 
@@ -21,6 +21,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
 import Collapse from "@mui/material/Collapse";
 import ListSubheader from "@mui/material/ListSubheader";
+import { useMenuItems } from "../hooks";
 
 const secondaryListItems = [
   { text: "Settings", icon: <SettingsRoundedIcon /> },
@@ -28,10 +29,11 @@ const secondaryListItems = [
   { text: "Support", icon: <SupportIcon /> },
 ];
 
+// TODO: After going for final design refactor this component to not violate DRY Principle
 const MenuContent = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
+  const { chats, dialogFlow, extensions, integrations, knowledgeBase, overview } = useMenuItems();
 
   const handleClick = () => {
     setOpen(!open);
@@ -39,22 +41,17 @@ const MenuContent = () => {
   return (
     <Stack sx={{ flexGrow: 1, p: 1, justifyContent: "space-between" }}>
       <List dense>
-        <ListItem
-          disablePadding
-          sx={{ display: "block" }}
-          onClick={() => {
-            navigate("./overview", { relative: "path" });
-            handleClick();
-          }}
-        >
-          <ListItemButton selected={location.pathname.endsWith("overview")}>
-            <ListItemIcon>
-              <HomeRoundedIcon />{" "}
-            </ListItemIcon>
-            <ListItemText primary={"Project Overview"} />
-            {open ? <ExpandLess /> : <ExpandMore />}
-          </ListItemButton>
-        </ListItem>
+        <Link to={overview.path}>
+          <ListItem disablePadding sx={{ display: "block" }} onClick={handleClick}>
+            <ListItemButton selected={pathname.endsWith(overview.path)}>
+              <ListItemIcon>
+                <HomeRoundedIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary={overview.title} />
+              {open ? <ExpandLess /> : <ExpandMore />}
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
         <Collapse in={open} timeout="auto" unmountOnExit>
           <ListItem sx={{ display: "block" }}>
@@ -65,71 +62,61 @@ const MenuContent = () => {
           </ListItem>
         </Collapse>
 
-        <ListItem
-          disablePadding
-          sx={{ display: "block", mt: 0.5 }}
-          onClick={() => navigate("./chats", { relative: "path" })}
-        >
-          <ListItemButton selected={location.pathname.endsWith("chats")}>
-            <ListItemIcon>
-              <QuestionAnswerRoundedIcon />{" "}
-            </ListItemIcon>
-            <ListItemText primary={"Chats"} />
-          </ListItemButton>
-        </ListItem>
+        <Link to={chats.path}>
+          <ListItem disablePadding sx={{ display: "block", mt: 0.5 }}>
+            <ListItemButton selected={location.pathname.includes(chats.path)}>
+              <ListItemIcon>
+                <QuestionAnswerRoundedIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary={chats.title} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
         <ListSubheader sx={{ mt: 1, mb: 1 }}>Build</ListSubheader>
-        <ListItem
-          disablePadding
-          sx={{ display: "block" }}
-          onClick={() => navigate("./knowledge-base", { relative: "path" })}
-        >
-          <ListItemButton selected={location.pathname.endsWith("knowledge-base")}>
-            <ListItemIcon>
-              <AutoStoriesIcon />{" "}
-            </ListItemIcon>
-            <ListItemText primary={"Knowledge Base"} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem
-          disablePadding
-          sx={{ display: "block", mt: 0.5 }}
-          onClick={() => navigate("./dialog-flow", { relative: "path" })}
-        >
-          <ListItemButton selected={location.pathname.endsWith("dialog-flow")}>
-            <ListItemIcon>
-              <AccountTreeIcon />{" "}
-            </ListItemIcon>
-            <ListItemText primary={"Dialog Flow"} />
-          </ListItemButton>
-        </ListItem>
+        <Link to={knowledgeBase.path}>
+          <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItemButton selected={location.pathname.includes(knowledgeBase.path)}>
+              <ListItemIcon>
+                <AutoStoriesIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary={knowledgeBase.title} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
+        <Link to={dialogFlow.path}>
+          <ListItem disablePadding sx={{ display: "block", mt: 0.5 }}>
+            <ListItemButton selected={location.pathname.includes(dialogFlow.path)}>
+              <ListItemIcon>
+                <AccountTreeIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary={dialogFlow.title} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
         <ListSubheader sx={{ mt: 1, mb: 1 }}>Release </ListSubheader>
+        <Link to={integrations.path}>
+          <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItemButton selected={location.pathname.includes(integrations.path)}>
+              <ListItemIcon>
+                <IntegrationInstructionsIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary={integrations.title} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
 
-        <ListItem
-          disablePadding
-          sx={{ display: "block" }}
-          onClick={() => navigate("./integrations", { relative: "path" })}
-        >
-          <ListItemButton selected={location.pathname.endsWith("integrations")}>
-            <ListItemIcon>
-              <IntegrationInstructionsIcon />{" "}
-            </ListItemIcon>
-            <ListItemText primary={"Integrations"} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem
-          disablePadding
-          sx={{ display: "block", mt: 0.5 }}
-          onClick={() => navigate("./extensions", { relative: "path" })}
-        >
-          <ListItemButton selected={location.pathname.endsWith("extensions")}>
-            <ListItemIcon>
-              <ExtensionIcon />{" "}
-            </ListItemIcon>
-            <ListItemText primary={"Extensions"} />
-          </ListItemButton>
-        </ListItem>
+        <Link to={extensions.path}>
+          <ListItem disablePadding sx={{ display: "block", mt: 0.5 }}>
+            <ListItemButton selected={location.pathname.includes(extensions.path)}>
+              <ListItemIcon>
+                <ExtensionIcon />{" "}
+              </ListItemIcon>
+              <ListItemText primary={extensions.title} />
+            </ListItemButton>
+          </ListItem>
+        </Link>
       </List>
 
       <List dense>

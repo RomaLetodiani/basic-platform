@@ -14,7 +14,7 @@ const OrgStore = create<IOrgStore>((set) => ({
   setLastOrgId: async (lastOrgId: string) => {
     set({ loading: true });
     // TODO: Check Permissions
-    const fakeApiCall = () => new Promise((resolve) => setTimeout(resolve, 4000));
+    const fakeApiCall = () => new Promise((resolve) => setTimeout(resolve, 1000));
     await fakeApiCall()
       .then(() => {
         console.log("Permissions checked successfully for org");
