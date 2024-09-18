@@ -9,15 +9,17 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { Stack } from "@mui/material";
+import { useParams } from "react-router-dom";
 
 const ChatViewPage = () => {
+  const { chatId } = useParams();
   const [formats, setFormats] = useState(() => ["bold", "italic"]);
   const handleFormat = (_: MouseEvent<HTMLElement>, newFormats: string[]) => {
     setFormats(newFormats);
   };
   return (
     <Stack direction="column" spacing={1}>
-      <OutlinedInput></OutlinedInput>
+      <OutlinedInput value={chatId}></OutlinedInput>
       <ToggleButtonGroup
         value={formats}
         onChange={handleFormat}
