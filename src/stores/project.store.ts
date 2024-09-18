@@ -12,7 +12,7 @@ const ProjectStore = create<IProjectStore>((set) => ({
   setLastProjectId: async (lastProjectId: string) => {
     set({ loading: true });
     // TODO: Check Permissions
-    const fakeApiCall = () => new Promise((resolve) => setTimeout(resolve, 2000));
+    const fakeApiCall = () => new Promise((resolve) => setTimeout(resolve, 1000));
     await fakeApiCall()
       .then(() => {
         console.log("Permissions checked successfully for project");
