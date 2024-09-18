@@ -5,6 +5,7 @@ import Paper from "@mui/material/Paper";
 
 import { ChatListItem } from ".";
 import { chatData } from "../utils/dummy.data";
+import { Fragment } from "react";
 
 const ChatList = () => {
   return (
@@ -13,20 +14,21 @@ const ChatList = () => {
       sx={{ width: "100%", maxWidth: 360, height: "100%", overflowY: "auto" }}
     >
       <List>
-        {chatData.map((section) => (
-          <div key={section.section}>
+        {chatData.map((section, index) => (
+          <Fragment key={`${section.section}-${index}`}>
             <ListSubheader>{section.section}</ListSubheader>
             {section.chats.map((chat) => (
-              <div key={chat.id}>
+              <Fragment key={chat.id}>
                 <ChatListItem
+                  id={chat.id}
                   avatar={chat.avatar}
                   primary={chat.primary}
                   secondary={chat.secondary}
                 />
                 <Divider />
-              </div>
+              </Fragment>
             ))}
-          </div>
+          </Fragment>
         ))}
       </List>
     </Paper>
