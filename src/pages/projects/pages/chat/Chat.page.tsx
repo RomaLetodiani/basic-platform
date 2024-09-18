@@ -4,6 +4,7 @@ import { ChatHeader, ChatList } from "./components";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
+import { Suspense } from "react";
 
 const ChatPage = () => {
   return (
@@ -24,7 +25,9 @@ const ChatPage = () => {
       >
         <ChatList />
         <Paper sx={{ flexGrow: 1 }} variant={"outlined"}>
-          <Outlet />
+          <Suspense fallback={<></>}>
+            <Outlet />
+          </Suspense>
         </Paper>
       </Stack>
     </Box>
