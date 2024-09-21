@@ -1,24 +1,35 @@
-import { Link, Outlet } from "react-router-dom";
-import { useOrgNavigate } from "./hooks";
-import { Stack } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import { Outlet } from "react-router-dom";
+import { Navbar, SideMenu } from "./components";
 
 const OrgLayout = () => {
-  const { orgId } = useOrgNavigate();
-
   return (
-    <div>
-      <div>
-        org layout
-        <Stack spacing={2}>
-          <Link to={`${orgId}`}>Overview</Link>
-          <Link to={`${orgId}/projects`}>Projects</Link>
-          <Link to={`${orgId}/team`}>Team</Link>
+    <Box sx={{ display: "flex", height: "100dvh", padding: 5 }}>
+      <SideMenu />
+      <Navbar />
+      <Box
+        component="main"
+        sx={(theme) => ({
+          flexGrow: 1,
+          backgroundColor: alpha(theme.palette.background.default, 1),
+          overflow: "auto",
+        })}
+      >
+        <Stack
+          spacing={2}
+          sx={{
+            alignItems: "center",
+
+            mt: { xs: 8, md: 0 },
+          }}
+          height={"100%"}
+        >
+          <Outlet />
         </Stack>
-      </div>
-      <div>
-        <Outlet />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 
