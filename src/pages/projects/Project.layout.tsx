@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { Outlet } from "react-router-dom";
 import { Navbar, SideMenu } from "./components";
+import { Suspense } from "react";
 
 const ProjectLayout = () => {
   return (
@@ -26,7 +27,9 @@ const ProjectLayout = () => {
           }}
           height={"100%"}
         >
-          <Outlet />
+          <Suspense>
+            <Outlet />
+          </Suspense>
         </Stack>
       </Box>
     </Box>
