@@ -3,10 +3,11 @@ import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import { Outlet } from "react-router-dom";
 import { Navbar, SideMenu } from "./components";
+import { Suspense } from "react";
 
 const OrgLayout = () => {
   return (
-    <Box sx={{ display: "flex", height: "100dvh", padding: 5 }}>
+    <Box sx={{ display: "flex", height: "100dvh" }}>
       <SideMenu />
       <Navbar />
       <Box
@@ -21,12 +22,15 @@ const OrgLayout = () => {
           spacing={2}
           sx={{
             alignItems: "center",
-
+            px: 5,
+            py: 2,
             mt: { xs: 8, md: 0 },
           }}
           height={"100%"}
         >
-          <Outlet />
+          <Suspense>
+            <Outlet />
+          </Suspense>
         </Stack>
       </Box>
     </Box>
