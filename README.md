@@ -1,4 +1,4 @@
-# Botu Platform Frontend
+# Platform Frontend
 
 ## Repository Rules and Structure
 

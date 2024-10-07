@@ -19,7 +19,7 @@ import Typography from "@mui/material/Typography";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useMsal } from "@azure/msal-react";
 import { useGoogleLogin } from "@react-oauth/google";
-import { msalLoginRequest } from "@/authConfig.ts";
+import { msalLoginRequest } from "@/auth.config";
 
 const LoginForm = () => {
   const [isForgotPasswordDialogOpen, setIsForgotPasswordDialogOpen] = useState(false);

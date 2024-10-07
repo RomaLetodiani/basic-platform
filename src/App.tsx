@@ -9,7 +9,7 @@ import Router from "./router/Router";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { msalConfig } from "@/authConfig.ts";
+import { msalConfig } from "@/auth.config";
 import { PublicClientApplication } from "@azure/msal-browser";
 import { MsalProvider } from "@azure/msal-react";
 import { GoogleOAuthProvider } from "@react-oauth/google";
